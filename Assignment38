@@ -1,0 +1,15 @@
+#PF-Assgn-38
+
+def check_double(number):
+    single=list(str(number))
+    double=list(str(number*2))
+    count=0
+    for index in single:
+        if index in double:
+            count=count+1
+    if count==len(single) and len(single)==len(double):
+        return True
+    else:
+        return False
+#Provide different values for number and test your program
+print(check_double(125874))
