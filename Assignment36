@@ -1,0 +1,17 @@
+#PF-Assgn-36
+def create_largest_number(number_list):
+    list1=number_list
+    largest_number=""
+    for index in range(0,len(number_list)):
+        max1=0
+        for index1 in range(0,len(list1)):
+            if (max1<list1[index1]):
+                max1=list1[index1]
+                maxi=index1
+        list1[maxi]=0
+        largest_number=largest_number+str(max1)
+    largest_number=int(largest_number)
+    return largest_number
+number_list=[23,45,67]
+largest_number=create_largest_number(number_list)
+print(largest_number)
