@@ -1,0 +1,39 @@
+#PF-Assgn-37
+
+#Global variables
+child_id=(101, 201, 301, 401, 501)
+chocolates_received=[10, 5, 3, 2, 4]
+
+def calculate_total_chocolates():
+    total_no_chocolates=0
+    for choco in chocolates_received:
+        total_no_chocolates=total_no_chocolates+choco
+    return total_no_chocolates
+
+def reward_child(child_id_rewarded,extra_chocolates):
+    count=0
+    if extra_chocolates>=1:
+        for index in range(0,len(child_id)):
+            if child_id_rewarded==child_id[index]:
+                chocolates_received[index]+=extra_chocolates
+                print(chocolates_received)
+                count+=1
+                break
+    else:
+        print("Extra chocolates is less than 1")
+    if count==0 and extra_chocolates>1:
+        print("Child id is invalid")
+
+
+    # Use the below given print statements to display the output
+    # Also, do not modify them for verification to work
+
+    #print("Extra chocolates is less than 1")
+    #print("Child id is invalid")
+    #print(chocolates_received)
+
+
+print(calculate_total_chocolates())
+#Test your code by passing different values for 
+#child_id_rewarded,extra_chocolates
+reward_child(201,2)
