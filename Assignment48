@@ -1,0 +1,29 @@
+#PF-Assgn-48
+
+def find_correct(word_dict):
+    #start writing your code here
+    correct=0
+    almost_correct=0
+    wrong=0
+    answer_list=[]
+    for keys_value in word_dict.keys():
+        count=0
+        if len(keys_value)==len(word_dict[keys_value]):
+            for item,items in zip(keys_value,word_dict[keys_value]):
+                if item==items:
+                    count+=1
+            if len(keys_value)==count:
+                correct+=1
+            elif len(keys_value)-2<=count:
+                almost_correct+=1
+            else:
+                wrong+=1
+        else:
+            wrong+=1
+    answer_list.append(correct)
+    answer_list.append(almost_correct)
+    answer_list.append(wrong)
+    return answer_list
+
+word_dict={"THEIR": "THEIR","BUSINESS":"BISINESS","WINDOWS":"WINDMILL","WERE":"WEAR","SAMPLE":"SAMPLE"}
+print(find_correct(word_dict))
