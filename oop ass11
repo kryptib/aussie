@@ -1,0 +1,75 @@
+class Flower:
+    def __init__(self):
+        self.__flower_name = None
+        self.__price_per_kg = None
+        self.__stock_available = None
+    def get_flower_name(self): return self.__flower_name
+    def get_price_per_kg(self): return self.__price_per_kg
+    def get_stock_available(self): return self.__stock_available
+    def set__flower_name(self, flower_name):
+        self.__flower_name = flower_name
+    def set_price_per_kg(self, price_per_kg):
+        self.__price_per_kg = price_per_kg
+    def set_stock_available(self, stock_available):
+        self.__stock_available = stock_available
+        
+    def validate_flower(self):
+        if(self.__flower_name.lower() == "orchid" or self.__flower_name.lower() == "rose" or self.__flower_name.lower() == "jasmine"):
+            return True
+        else:
+            print("The flower name is invalid")
+            return False
+    
+    def validate_stock(self, required_quantity):
+        if(required_quantity <= self.__stock_available):
+            return True
+        else:
+            print("The stock are not available")
+            return False
+        
+    def sell_flower(self, required_quantity):
+        if(self.validate_flower() and self.validate_stock(required_quantity)):
+            self.__stock_available = self.__stock_available - required_quantity
+            
+    def check_level(self):
+        if(self.__flower_name.lower() == "orchid" and self.__stock_available < 15):
+            return True
+        elif(self.__flower_name.lower() == "rose" and self.__stock_available < 25):
+            return True
+        elif(self.__flower_name.lower() == "jasmine" and self.__stock_available < 40):
+            return True 
+        else:
+            print("No reordering required")
+            return False
+        
+orchid = Flower()
+orchid.set_flower_name("orchid")
+orchid.set_price_per_kg(250)
+orchid.set_stock_available(14)
+orchid.sell_flower(8)
+orchid.check_level()
+print("name:", orchid.get_flower_name())
+print("price:", orchid.get_price_per_kg())
+print("stock available:", orchid.get_stock_available())
+
+rose = Flower()
+rose.set_flower_name("rose")
+rose.set_price_per_kg(150)
+rose.set_stock_available(30)
+rose.sell_flower(6)
+rose.check_level()
+print("name:", orchid.get_flower_name())
+print("price:", orchid.get_price_per_kg())
+print("stock available:", orchid.get_stock_available())
+    
+jasmine = Flower()
+jasmine.set_flower_name("jasmine")
+jasmine.set_price_per_kg(45)
+jasmine.set_stock_available(45)
+jasmine.sell_flower(130)
+jasmine.check_level()
+print("name:", orchid.get_flower_name())
+print("price:", orchid.get_price_per_kg())
+print("stock available:", orchid.get_stock_available())
+        
+    
