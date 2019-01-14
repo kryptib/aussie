@@ -1,0 +1,21 @@
+#PF-Tryout
+import random
+def fun_p(num):
+    head=0 
+    tail=0
+    while(num!=0):
+        if(random.randrange(1,1000)<=70):
+            head=head+1 
+            num=num-1
+        else:
+            tail=tail+1 
+            num=num-1
+    return head
+    
+    
+    
+    
+    
+    
+s=fun_p(1000)
+print(s)
