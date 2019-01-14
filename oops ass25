@@ -1,0 +1,88 @@
+#OOPR-Assgn-25
+class FruitInfo:
+    __fruit_name_list=["Apple","Guava","Orange","Grape","Sweet Lime"]
+    __fruit_price_list=[200,80,70,110,60]
+    
+    @staticmethod
+    def get_fruit_price(fruit_name):
+        cnt=0
+        for i in range(0,len(FruitInfo.__fruit_name_list)):
+            if fruit_name==FruitInfo.__fruit_name_list[i]:
+                cnt=cnt+1
+                price=FruitInfo.__fruit_price_list[i]
+                
+        if cnt==1:
+            return price
+        
+        else:
+            return -1
+                
+    @staticmethod
+    def get_fruit_name_list():
+        return FruitInfo.__fruit_name_list
+
+    @staticmethod
+    def get_fruit_price_list():
+        return FruitInfo.__fruit_price_list
+class Purchase(FruitInfo):
+    __counter=101
+    def __init__(self,customer,fruit_name,quantity):
+        self.__purchase_id="P"+str(Purchase.__counter)
+        Purchase.__counter+=1
+        self.__customer=customer
+        self.__fruit_name=fruit_name
+        self.__quantity=quantity
+
+    def get_purchase_id(self):
+        return self.__purchase_id
+
+    def get_customer(self):
+        return self.__customer
+
+    def get_quantity(self):
+        return self.__quantity
+
+    def calculate_price(self):
+        val=self.get_fruit_price(self.__fruit_name)
+        print("val",val)
+        val1=val*self.__quantity
+        print("val1",val1)
+        max1=max(self.get_fruit_price_list())
+        print("max:",max1)
+        min1=min(self.get_fruit_price_list())
+        print(min1)
+        if val==max1 and self.__quantity>1:
+            val1-=(val1*2)/100
+        elif val==min1 and self.__quantity>=5:
+            val1-=(val1*5)/100
+        elif self.__customer.get_cust_type()=="wholesale":
+            val1-=(val1*10)/100
+            print("whole",val1)
+            
+            print(val1)
+            
+        else:
+            return -1
+        
+class Customer:
+    def __init__(self,customer_name,cust_type):
+        self.__customer_name=customer_name
+        self.__cust_type=cust_type
+
+    def get_customer_name(self):
+        return self.__customer_name
+
+
+    def get_cust_type(self):
+        return self.__cust_type
+# c=Customer("abc","wholesale")
+# p=Purchase("Apple",1)
+# p.calculate_price()
+# p.get_customer()
+# p.get_fruit_price("Apple")
+# p.get_quantity()
+# p.get_purchase_id()
+f=FruitInfo()
+print(FruitInfo.get_fruit_price("Grape"))
+p=Purchase("wholesale","Guava",1)
+p.calculate_price()   
