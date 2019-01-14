@@ -1,0 +1,19 @@
+#PF-Assgn-50
+
+def sms_encoding(data):
+    msg=data.split(" ")
+    msg1=""
+    for i in msg:
+        if(i=='a'or i=='e'or i=='i'or i=='o'or i=='u'or i=='A'or i=='E'or i=='I'or i=='O'or i=='U' ):
+            msg1=msg1+i+" "
+        else:
+            for j in range(0,len(i)):
+                if(i[j]=='a'or i[j]=='e'or i[j]=='i'or i[j]=='o'or i[j]=='u'or i[j]=='A'or i[j]=='E'or i[j]=='I'or i[j]=='O'or i[j]=='U'):
+                    continue
+                else:
+                    msg1=msg1+i[j]
+            msg1=msg1+" "
+    return msg1[:-1]
+
+data="I will not repeat mistakes"
+print(sms_encoding(data))
