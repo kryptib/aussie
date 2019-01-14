@@ -1,0 +1,31 @@
+#PF-Assgn-47
+def encrypt_sentence(sentence):
+    d={}
+    j=1
+    msg2=""
+    msg=sentence.split(" ")
+    for i in msg:
+        d[j]=i
+        j=j+1
+    for i in d:
+        k=d[i]
+        m=""
+        msg1=""
+        m1=""
+        
+        if(i%2!=0):
+            m=k[::-1]
+            msg2=msg2+m+" "
+        else:
+            for j in range(0,len(k)):
+                if(k[j]=='a' or k[j]=='e' or k[j]=='i' or k[j]=='o' or k[j]=='u'):
+                    m=m+k[j]
+                else:
+                    msg1=msg1+k[j]
+            m1=msg1+m
+            msg2=msg2+m1+" "
+    return msg2[:-1]
+
+sentence="She sells sea shells on the sea shore"
+encrypted_sentence=encrypt_sentence(sentence)
+print(encrypted_sentence)
